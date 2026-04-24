@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upeksha Amarasinghe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a2e;
+      --ink-light: #4a4a6a;
+      --accent: #5b6af0;
+      --accent-soft: #eef0fe;
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --border: #e8e8ec;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      max-width: 420px;
+      margin-bottom: 2.2rem;
+      line-height: 1.75;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #4556e8;
+      border-color: #4556e8;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .stat-card .icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-card .value {
+      font-size: 0.95rem;
+      color: var(--ink);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+      line-height: 1.25;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      color: var(--ink-light);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .about-aside {}
+
+    .aside-block {
+      background: var(--accent-soft);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .aside-block h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .aside-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .aside-block ul li {
+      font-size: 0.88rem;
+      color: var(--ink);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(91,106,240,0.12);
+      line-height: 1.5;
+    }
+
+    .aside-block ul li:last-child { border-bottom: none; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg); }
+
+    .exp-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .exp-card:hover {
+      box-shadow: 0 6px 24px rgba(91,106,240,0.1);
+      transform: translateY(-2px);
+    }
+
+    .exp-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+      gap: 1rem;
+    }
+
+    .exp-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .exp-company {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .exp-date {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      white-space: nowrap;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .exp-context {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-desc {
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(91,106,240,0.2);
+    }
+
+    /* ── RESEARCH ── */
+    #research {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .pub-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: all 0.2s;
+      color: inherit;
+    }
+
+    .pub-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(91,106,240,0.12);
+      transform: translateY(-2px);
+    }
+
+    .pub-venue {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .pub-desc {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+
+    .pub-arrow {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-intro {
+      font-size: 1rem;
+      color: var(--ink-light);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .contact-link .cl-icon { font-size: 1.1rem; }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+
+    .contact-form h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea { min-height: 110px; }
+
+    .form-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.4rem;
+    }
+
+    .form-btn:hover { background: #4556e8; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner,
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-visual { display: none; }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Upeksha Amarasinghe</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Data Scientist · AI & Labor · Social Impact</p>
+        <h1 class="hero-name">Using AI to understand<br />how AI changes work.</h1>
+        <p class="hero-tagline">
+          I sit at the intersection of machine learning and labor economics — building systems that measure, anticipate, and mitigate the human costs of automation.
+        </p>
+        <div class="hero-ctas">
+          <a href="#about" class="btn btn-primary">About me</a>
+          <a href="#research" class="btn btn-secondary">Research & Writing</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stat-card">
+          <span class="icon">🔬</span>
+          <div>
+            <p class="label">Research Focus</p>
+            <p class="value">Labor market impacts of automation & AI adoption</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="icon">🏛️</span>
+          <div>
+            <p class="label">Policy Impact</p>
+            <p class="value">Cited by Public Health Ontario, Federal Reserve Bank of Philadelphia, University of Ottawa</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="icon">🤝</span>
+          <div>
+            <p class="label">Mission</p>
+            <p class="value">AI that expands economic opportunity — not just productivity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <div class="divider"></div>
+      <div class="about-grid">
+        <div class="about-body">
+          <h2 class="section-title">Motivated by a simple question:<br /><em>Who bears the cost of progress?</em></h2>
+          <p>
+            I studied Math and Economics at the University of Toronto and spent the early part of my career trying to understand how technology reshapes labor markets — not in the abstract, but for <strong>specific workers, in specific occupations, in specific cities</strong>. At MaRS Discovery District, I led research on automation risk across Canada, built tools to help workers navigate job transitions, and studied the COVID-19 vulnerabilities of precarious, essential workers. That work was cited by public health agencies, government bodies, and academic institutions.
+          </p>
+          <p>
+            Since then, I've moved deeper into applied machine learning — building AI systems at SkillLab (AI-powered job matching for governments and NGOs), Shopify, and now <strong>Workhelix</strong>, where I help Fortune 500 companies measure the real ROI of AI implementation. The thread connecting all of it: <strong>I want to understand what AI actually does to economic life</strong>, not just what we theorize it might do.
+          </p>
+          <p>
+            I believe the critical challenge of our era isn't whether AI will be transformative — it clearly will be — but whether that transformation distributes its gains broadly or concentrates them narrowly. That question is fundamentally <strong>empirical, economic, and urgent</strong>. It's why I'm drawn to Anthropic's work on AI safety and its economic and social dimensions: the organizations shaping how AI is deployed will shape who benefits.
+          </p>
+          <p>
+            I'm looking to do research that connects the frontier of AI capability with rigorous measurement of its labor market and social effects — and to do it in ways that can actually inform policy and practice.
+          </p>
+        </div>
+        <div class="about-aside">
+          <div class="aside-block">
+            <h4>Core Interests</h4>
+            <ul>
+              <li>Labor market effects of automation & AI</li>
+              <li>AI for economic inclusion & opportunity</li>
+              <li>Measurement of AI ROI & workforce impact</li>
+              <li>Vulnerable worker policy & COVID-19 precarity</li>
+              <li>Green transition & just labor adjustment</li>
+            </ul>
+          </div>
+          <div class="aside-block">
+            <h4>Education</h4>
+            <ul>
+              <li>BSc, Math & Economics — University of Toronto</li>
+            </ul>
+          </div>
+          <div class="aside-block">
+            <h4>Technical</h4>
+            <ul>
+              <li>Python, SQL, GCP, AWS</li>
+              <li>LLMs (Anthropic, OpenAI, Gemini), Evals</li>
+              <li>NLP, BERT, ML pipelines</li>
+              <li>Tableau, Looker, Streamlit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Experience</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Building at the frontier<br />of AI and economics</h2>
+      <div class="exp-cards">
+
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <p class="exp-role">Data Scientist</p>
+              <p class="exp-company">Workhelix</p>
+            </div>
+            <p class="exp-date">Jun 2023 – Present</p>
+          </div>
+          <p class="exp-context">Series A · Andrew Ng–backed · B2B SaaS for F500 AI ROI measurement</p>
+          <p class="exp-desc">
+            Building ML and LLM-powered features that help Fortune 500 companies understand the economic value of their AI investments. I own end-to-end ML infrastructure on GCP & AWS, build LLM eval frameworks, and work directly with C-suite stakeholders to frame multi-million dollar decisions around AI adoption. This role puts me at a unique vantage point: seeing how the largest companies in the world are actually deploying AI, what's working, and what the real workforce implications are.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">LLMs</span><span class="tag">ML Infra</span><span class="tag">AI Evals</span><span class="tag">GCP</span><span class="tag">AWS</span><span class="tag">AI ROI</span>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <p class="exp-role">Data Scientist</p>
+              <p class="exp-company">Shopify</p>
+            </div>
+            <p class="exp-date">May 2022 – May 2023</p>
+          </div>
+          <p class="exp-context">300K MAU · Automations & Inbox product lines</p>
+          <p class="exp-desc">
+            Data lead for Shopify Automations ($10M/month GMV), running regression models and A/B tests to measure the causal impact of product changes on merchant outcomes. Built analytical infrastructure that connected product decisions to real economic results for small businesses.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">Causal Inference</span><span class="tag">A/B Testing</span><span class="tag">dbt</span><span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <p class="exp-role">Senior Data Scientist</p>
+              <p class="exp-company">SkillLab</p>
+            </div>
+            <p class="exp-date">Jan 2021 – Dec 2021</p>
+          </div>
+          <p class="exp-context">Google AI Impact Challenge Winner · AI job-matching for governments & NGOs · Amsterdam</p>
+          <p class="exp-desc">
+            Built and deployed a multilingual NLP model (BERT) for AI-powered job matching used by governments and NGOs to help workers navigate career transitions. Also co-researched the labor market impacts of the green transition with ETH Zürich — identifying data gaps that hamper evidence-based policy for workers displaced by decarbonization.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">NLP</span><span class="tag">BERT</span><span class="tag">Job Matching</span><span class="tag">Green Transition</span><span class="tag">Policy Research</span>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <p class="exp-role">Data Analyst</p>
+              <p class="exp-company">MaRS Discovery District</p>
+            </div>
+            <p class="exp-date">Apr 2018 – Dec 2020</p>
+          </div>
+          <p class="exp-context">North America's largest innovation hub · Toronto</p>
+          <p class="exp-desc">
+            This is where my research identity was formed. I led studies on automation risk across Canadian occupations and regions (commissioned by Brookfield Institute & Federal Reserve Bank of Philadelphia), built NLP models to measure supply and demand of inclusive financial innovation, and identified the scope of COVID-19 precarity among essential workers. That last study was cited by Public Health Ontario, the Labour Market Information Council, the Centre for Future Work, and the University of Ottawa — connecting data science to real policy change.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">Labor Economics</span><span class="tag">Automation Research</span><span class="tag">NLP</span><span class="tag">Financial Inclusion</span><span class="tag">COVID-19 Policy</span>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <p class="exp-role">Data Analyst</p>
+              <p class="exp-company">CanadaHelps</p>
+            </div>
+            <p class="exp-date">May 2016 – Apr 2018</p>
+          </div>
+          <p class="exp-context">Digital fundraising infrastructure for Canadian non-profits · $3B+ processed</p>
+          <p class="exp-desc">
+            Early career work building customer segmentation models and real-time SQL alert systems that protected non-profit fundraising revenue at scale.
+          </p>
+          <div class="exp-tags">
+            <span class="tag">Segmentation</span><span class="tag">SQL</span><span class="tag">Non-profit</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-inner">
+      <p class="section-label">Research & Writing</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Published work on AI,<br />labor, and economic inclusion</h2>
+      <div class="research-grid">
+
+        <a class="pub-card" href="https://marsdd.com/wp-content/uploads/2019/03/Automation-Affecting-Canadians-Final-1.pdf" target="_blank" rel="noopener">
+          <p class="pub-venue">MaRS Discovery District · Brookfield Institute</p>
+          <p class="pub-title">Automation Affecting Canadians</p>
+          <p class="pub-desc">An occupational and regional analysis of automation risk across Canada, examining which workers, sectors, and communities face the greatest displacement pressure from technological change. Commissioned by the Brookfield Institute for Innovation + Entrepreneurship and the Federal Reserve Bank of Philadelphia.</p>
+          <p class="pub-arrow">Read the report →</p>
+        </a>
+
+        <a class="pub-card" href="https://medium.com/swlh/measure-the-supply-and-demand-for-inclusive-innovation-using-machine-learning-e8e0cedbd439" target="_blank" rel="noopener">
+          <p class="pub-venue">The Startup · Medium</p>
+          <p class="pub-title">Measuring Supply & Demand for Inclusive Innovation Using Machine Learning</p>
+          <p class="pub-desc">NLP-driven research building a classification model to map the ecosystem of solutions targeting financial inclusion among the world's lowest-income populations — quantifying where innovation is (and isn't) meeting need.</p>
+          <p class="pub-arrow">Read the article →</p>
+        </a>
+
+        <a class="pub-card" href="https://www.marsdd.com/research-and-insights/automation-affecting-canadians/" target="_blank" rel="noopener">
+          <p class="pub-venue">MaRS Discovery District</p>
+          <p class="pub-title">Automation Affecting Canadians: Interactive Data Visualization</p>
+          <p class="pub-desc">The interactive companion to the full automation report — exploring occupation-level automation risk, wage distributions, and regional vulnerability across Canada. Built and managed a team of four data science interns to produce this.</p>
+          <p class="pub-arrow">Explore the tool →</p>
+        </a>
+
+        <a class="pub-card" href="https://www.marsdd.com/research-and-insights/covid-19-and-ontarios-sales-and-service-workers-who-is-most-vulnerable/" target="_blank" rel="noopener">
+          <p class="pub-venue">MaRS Discovery District</p>
+          <p class="pub-title">COVID-19 and Ontario's Sales & Service Workers: Who Is Most Vulnerable?</p>
+          <p class="pub-desc">Identified the number and wages of essential workers facing elevated health risks and precarious employment conditions during the pandemic, and mapped the policy gaps leaving them exposed. Cited by Public Health Ontario, the Labour Market Information Council, the Centre for Future Work, and the University of Ottawa.</p>
+          <p class="pub-arrow">Read the research →</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <div class="divider"></div>
+      <div class="contact-layout">
+        <div>
+          <h2 class="section-title">Let's work on hard problems together</h2>
+          <p class="contact-intro">
+            I'm interested in research collaborations, fellowship opportunities, and conversations about the intersection of AI, labor economics, and economic policy. If you're working on understanding how AI reshapes economic life — especially for workers who don't have a seat at the table where these decisions are made — I'd love to connect.
+          </p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:upeksha.amarasinghe@gmail.com">
+              <span class="cl-icon">✉️</span>
+              upeksha.amarasinghe@gmail.com
+            </a>
+            <a class="contact-link" href="https://linkedin.com/in/uamarasinghe" target="_blank" rel="noopener">
+              <span class="cl-icon">💼</span>
+              linkedin.com/in/uamarasinghe
+            </a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send a message</h3>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button type="submit" class="form-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Upeksha Amarasinghe · Toronto, Canada</p>
+  </footer>
+
+</body>
+</html>
