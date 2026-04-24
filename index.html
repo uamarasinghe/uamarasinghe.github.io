@@ -923,16 +923,6 @@
           <p class="contact-intro">
             I am interested in research collaborations and conversations about the intersection of AI, labor economics, and economic policy. If you are working on understanding how AI reshapes economic life for workers whose futures are shaped by these decisions, I would love to connect.
           </p>
-          <div class="contact-links">
-            <a class="contact-link" id="emailLink" href="#">
-              <span class="cl-icon">✉️</span>
-              <span id="emailDisplay">loading...</span>
-            </a>
-            <a class="contact-link" href="https://linkedin.com/in/uamarasinghe" target="_blank" rel="noopener">
-              <span class="cl-icon">💼</span>
-              linkedin.com/in/uamarasinghe
-            </a>
-          </div>
         </div>
         <div class="contact-form">
           <h3>Get in touch</h3>
@@ -960,12 +950,8 @@
       var d = 'gmail' + '.' + 'com';
       var addr = u + '\u0040' + d;
       var mailto = 'mailto:' + addr + '?subject=Getting%20in%20touch';
-      var link = document.getElementById('emailLink');
-      var btn  = document.getElementById('emailBtn');
-      var disp = document.getElementById('emailDisplay');
-      if (link)  link.href = 'mailto:' + addr;
-      if (btn)   btn.href  = mailto;
-      if (disp)  disp.textContent = addr;
+      var btn = document.getElementById('emailBtn');
+      if (btn) btn.href = mailto;
     })();
 
     var toggle = document.getElementById('navToggle');
