@@ -924,9 +924,9 @@
             I am interested in research collaborations, fellowship opportunities, and conversations about the intersection of AI, labor economics, and economic policy. If you are working on understanding how AI reshapes economic life for workers whose futures are shaped by these decisions, I would love to connect.
           </p>
           <div class="contact-links">
-            <a class="contact-link" href="mailto:upeksha.amarasinghe@gmail.com">
+            <a class="contact-link" id="emailLink" href="#">
               <span class="cl-icon">✉️</span>
-              upeksha.amarasinghe@gmail.com
+              <span id="emailDisplay">loading...</span>
             </a>
             <a class="contact-link" href="https://linkedin.com/in/uamarasinghe" target="_blank" rel="noopener">
               <span class="cl-icon">💼</span>
@@ -939,8 +939,7 @@
           <p style="font-size:0.92rem; color:var(--ink-light); line-height:1.7; margin-bottom:1.6rem;">
             The best way to reach me is by email. I read everything and respond to messages that align with my work and interests.
           </p>
-          <a class="form-btn" style="display:block; text-align:center; text-decoration:none; margin-bottom:1rem;"
-            href="mailto:upeksha.amarasinghe@gmail.com?subject=Getting%20in%20touch">
+          <a class="form-btn" id="emailBtn" style="display:block; text-align:center; text-decoration:none; margin-bottom:1rem;" href="#">
             ✉ Send me an email
           </a>
           <a class="contact-link" href="https://linkedin.com/in/uamarasinghe" target="_blank" rel="noopener"
@@ -955,6 +954,20 @@
 
   <!-- FOOTER -->
   <script>
+    // Email assembled at runtime — never in plain HTML
+    (function() {
+      var u = 'upeksha.amarasinghe';
+      var d = 'gmail' + '.' + 'com';
+      var addr = u + '\u0040' + d;
+      var mailto = 'mailto:' + addr + '?subject=Getting%20in%20touch';
+      var link = document.getElementById('emailLink');
+      var btn  = document.getElementById('emailBtn');
+      var disp = document.getElementById('emailDisplay');
+      if (link)  link.href = 'mailto:' + addr;
+      if (btn)   btn.href  = mailto;
+      if (disp)  disp.textContent = addr;
+    })();
+
     var toggle = document.getElementById('navToggle');
     var links  = document.getElementById('navLinks');
     toggle.addEventListener('click', function() {
