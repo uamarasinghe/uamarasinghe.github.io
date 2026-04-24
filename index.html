@@ -58,8 +58,11 @@
       color: var(--ink);
       text-decoration: none;
       font-weight: 500;
-      flex-shrink: 0;
+      min-width: 0;
     }
+
+    .logo-short { display: none; }
+    .logo-full { display: inline; }
 
     .nav-links {
       display: flex;
@@ -580,25 +583,28 @@
     @media (max-width: 768px) {
       /* Nav */
       .nav-toggle { display: flex; }
+      .logo-full { display: none; }
+      .logo-short { display: inline; }
 
       .nav-links {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 60px;
         left: 0; right: 0;
-        background: rgba(250,250,248,0.98);
-        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+        border-bottom: 2px solid var(--border);
         flex-direction: column;
         gap: 0;
-        padding: 0.5rem 0;
+        z-index: 99;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       }
 
       .nav-links.open { display: flex; }
 
       .nav-links li a {
         display: block;
-        padding: 0.85rem 1.5rem;
-        font-size: 0.95rem;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
         border-bottom: 1px solid var(--border);
       }
 
@@ -659,17 +665,20 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="mainNav">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">Upeksha Amarasinghe</a>
-      <button class="nav-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-full">Upeksha Amarasinghe</span>
+        <span class="logo-short">UA</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
-        <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">About</a></li>
-        <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Experience</a></li>
-        <li><a href="#research" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Research</a></li>
-        <li><a href="#contact" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -721,18 +730,18 @@
       <div class="divider"></div>
       <div class="about-grid">
         <div class="about-body">
-          <h2 class="section-title">Motivated by a simple question:<br /><em>Who bears the cost of progress?</em></h2>
+          <h2 class="section-title">Motivated by a simple question:<br /><em>Who benefits from progress?</em></h2>
           <p>
-            I studied Math and Economics at the University of Toronto and spent the early part of my career trying to understand how technology reshapes labor markets, with focus on <strong>specific workers, in specific occupations, in specific cities</strong>. At MaRS Discovery District, I led research on automation risk across Canada, built tools to help workers navigate job transitions, and studied the COVID-19 vulnerabilities of precarious, essential workers. That work was cited by public health agencies, government bodies, and academic institutions.
+            I am a data scientist who has spent my career at the intersection of AI and labor economics, translating rigorous economic research into systems that governments and companies can actually act on. Right now, at <strong>Workhelix</strong>, I am operationalizing foundational research on how LLMs and generative AI reshape work and workers, helping Fortune 500 companies and governments measure the real workforce implications of AI adoption. One of the most significant projects I have worked on supported the Chilean government in designing and running an <strong>AI upskilling program reaching 130,000 workers</strong>.
           </p>
           <p>
-            Since then, I have moved deeper into applied machine learning, building AI systems at SkillLab (AI-powered job matching for governments and NGOs), Shopify, and now <strong>Workhelix</strong>, where I help Fortune 500 companies measure the real ROI of AI implementation. The thread connecting all of it: <strong>understanding what AI actually does to economic life</strong>, grounded in evidence and rigorous measurement.
+            The work at Workhelix sits at the applied frontier of labor economics and AI. The core intellectual challenge is one I find genuinely compelling: how do you take economic frameworks about task exposure and skill complementarity and turn them into tools that actually inform decisions at scale, across industries, across countries?
           </p>
           <p>
-            The central challenge of our era is ensuring AI's transformation distributes its gains broadly. That question is fundamentally <strong>empirical, economic, and urgent</strong>. It is why I am drawn to Anthropic's work on AI safety and its economic and social dimensions: the organizations shaping how AI is deployed will shape who benefits.
+            That question has roots in earlier work. At <strong>MaRS Discovery District</strong>, I led studies on automation risk across Canadian occupations and regions, built a job recommender engine to help workers navigate transitions, and identified the COVID-19 vulnerabilities of precarious essential workers. That research was cited by Public Health Ontario, the Federal Reserve Bank of Philadelphia, the Labour Market Information Council, and the University of Ottawa.
           </p>
           <p>
-            I am looking to do work that connects the frontier of AI capability with rigorous measurement of its labor market and social effects, in ways that can directly inform policy and practice.
+            The central challenge of our era is ensuring AI's gains are broadly distributed. That question is fundamentally <strong>empirical, economic, and urgent</strong>. It is why I am drawn to Anthropic's work on the economic and social dimensions of AI: the organizations shaping how AI is deployed will shape who benefits from it.
           </p>
         </div>
         <div class="about-aside">
@@ -926,28 +935,41 @@
           </div>
         </div>
         <div class="contact-form">
-          <h3>Send a message</h3>
-          <form action="mailto:upeksha.amarasinghe@gmail.com" method="POST" enctype="text/plain">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" placeholder="What's on your mind?" required></textarea>
-            </div>
-            <button type="submit" class="form-btn">Send Message</button>
-          </form>
+          <h3>Get in touch</h3>
+          <p style="font-size:0.92rem; color:var(--ink-light); line-height:1.7; margin-bottom:1.6rem;">
+            The best way to reach me is by email. I read everything and respond to messages that align with my work and interests.
+          </p>
+          <a class="form-btn" style="display:block; text-align:center; text-decoration:none; margin-bottom:1rem;"
+            href="mailto:upeksha.amarasinghe@gmail.com?subject=Getting%20in%20touch">
+            ✉ Send me an email
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/uamarasinghe" target="_blank" rel="noopener"
+            style="justify-content:center;">
+            <span class="cl-icon">💼</span>
+            Connect on LinkedIn
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
+  <script>
+    var toggle = document.getElementById('navToggle');
+    var links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', function() {
+      var open = links.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
   <footer>
     <p>© 2026 Upeksha Amarasinghe · Toronto, Canada</p>
   </footer>
