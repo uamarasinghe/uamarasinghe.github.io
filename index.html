@@ -32,12 +32,12 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(250,250,248,0.92);
+      background: rgba(250,250,248,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -45,7 +45,7 @@
     .nav-inner {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       height: 60px;
       display: flex;
       align-items: center;
@@ -54,10 +54,11 @@
 
     .nav-logo {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--ink);
       text-decoration: none;
       font-weight: 500;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -77,12 +78,36 @@
 
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 6rem 2rem 4rem;
+      padding: 6rem 1.5rem 4rem;
     }
 
     .hero-inner {
@@ -91,14 +116,12 @@
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      gap: 4rem;
       align-items: center;
     }
 
-    .hero-text {}
-
     .hero-eyebrow {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -108,7 +131,7 @@
 
     .hero-name {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 500;
       line-height: 1.15;
       color: var(--ink);
@@ -116,11 +139,11 @@
     }
 
     .hero-tagline {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--ink-light);
       max-width: 420px;
       margin-bottom: 2.2rem;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     .hero-ctas {
@@ -187,7 +210,7 @@
     }
 
     .stat-card .label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -196,16 +219,14 @@
     }
 
     .stat-card .value {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--ink);
       font-weight: 400;
       line-height: 1.5;
     }
 
-    /* ── SECTIONS ── */
-    section {
-      padding: 5rem 2rem;
-    }
+    /* SECTIONS */
+    section { padding: 5rem 1.5rem; }
 
     .section-inner {
       max-width: 1000px;
@@ -213,7 +234,7 @@
     }
 
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -223,14 +244,22 @@
 
     .section-title {
       font-family: var(--serif);
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 500;
       color: var(--ink);
       margin-bottom: 2.5rem;
       line-height: 1.25;
     }
 
-    /* ── ABOUT ── */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT */
     #about {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -240,7 +269,7 @@
     .about-grid {
       display: grid;
       grid-template-columns: 3fr 2fr;
-      gap: 5rem;
+      gap: 4rem;
       align-items: start;
     }
 
@@ -258,17 +287,15 @@
       font-weight: 600;
     }
 
-    .about-aside {}
-
     .aside-block {
       background: var(--accent-soft);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.4rem;
       margin-bottom: 1.2rem;
     }
 
     .aside-block h4 {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -276,10 +303,7 @@
       margin-bottom: 0.8rem;
     }
 
-    .aside-block ul {
-      list-style: none;
-      padding: 0;
-    }
+    .aside-block ul { list-style: none; }
 
     .aside-block ul li {
       font-size: 0.88rem;
@@ -291,20 +315,20 @@
 
     .aside-block ul li:last-child { border-bottom: none; }
 
-    /* ── EXPERIENCE ── */
+    /* EXPERIENCE */
     #experience { background: var(--bg); }
 
     .exp-cards {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     .exp-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.8rem 2rem;
+      padding: 1.6rem 1.8rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s, transform 0.2s;
     }
@@ -318,24 +342,24 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       gap: 1rem;
     }
 
     .exp-role {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--ink);
     }
 
     .exp-company {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 500;
       color: var(--accent);
     }
 
     .exp-date {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--ink-light);
       white-space: nowrap;
       margin-top: 0.15rem;
@@ -343,10 +367,10 @@
     }
 
     .exp-context {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--ink-light);
       font-style: italic;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .exp-desc {
@@ -358,21 +382,21 @@
     .exp-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
     }
 
     .tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      padding: 0.25rem 0.75rem;
+      padding: 0.22rem 0.65rem;
       border-radius: 20px;
       background: var(--accent-soft);
       color: var(--accent);
       border: 1px solid rgba(91,106,240,0.2);
     }
 
-    /* ── RESEARCH ── */
+    /* RESEARCH */
     #research {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -389,11 +413,11 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.4rem;
       text-decoration: none;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
       transition: all 0.2s;
       color: inherit;
     }
@@ -405,7 +429,7 @@
     }
 
     .pub-venue {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -421,7 +445,7 @@
     }
 
     .pub-desc {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--ink-light);
       line-height: 1.6;
     }
@@ -433,13 +457,13 @@
       padding-top: 0.5rem;
     }
 
-    /* ── CONTACT ── */
+    /* CONTACT */
     #contact { background: var(--bg); }
 
     .contact-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      gap: 4rem;
       align-items: start;
     }
 
@@ -462,13 +486,14 @@
       gap: 0.75rem;
       text-decoration: none;
       color: var(--ink);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 500;
       padding: 0.9rem 1.2rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
       transition: all 0.2s;
+      word-break: break-all;
     }
 
     .contact-link:hover {
@@ -477,7 +502,7 @@
       transform: translateX(4px);
     }
 
-    .contact-link .cl-icon { font-size: 1.1rem; }
+    .contact-link .cl-icon { font-size: 1.1rem; flex-shrink: 0; }
 
     .contact-form {
       background: var(--surface);
@@ -493,13 +518,11 @@
       margin-bottom: 1.5rem;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
+    .form-group { margin-bottom: 1.2rem; }
 
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--ink-light);
       letter-spacing: 0.06em;
@@ -523,9 +546,7 @@
     }
 
     .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-    }
+    .form-group textarea:focus { border-color: var(--accent); }
 
     .form-group textarea { min-height: 110px; }
 
@@ -546,43 +567,92 @@
 
     .form-btn:hover { background: #4556e8; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       text-align: center;
     }
 
-    footer p {
-      font-size: 0.82rem;
-      color: var(--ink-light);
-    }
+    footer p { font-size: 0.82rem; color: var(--ink-light); }
 
-    /* ── DIVIDER ── */
-    .divider {
-      width: 48px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin-bottom: 2rem;
-    }
-
-    /* ── RESPONSIVE ── */
+    /* MOBILE */
     @media (max-width: 768px) {
-      .hero-inner,
-      .about-grid,
-      .contact-layout {
+      /* Nav */
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0; right: 0;
+        background: rgba(250,250,248,0.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li a {
+        display: block;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child a { border-bottom: none; }
+
+      /* Hero */
+      #hero {
+        min-height: auto;
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .hero-inner {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 0;
       }
 
       .hero-visual { display: none; }
 
-      .research-grid {
+      .hero-tagline { max-width: 100%; }
+
+      /* Sections */
+      section { padding: 3.5rem 1.5rem; }
+
+      .section-title { margin-bottom: 1.8rem; }
+
+      /* About */
+      .about-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
 
-      .nav-links { gap: 1.2rem; }
+      /* Exp cards */
+      .exp-card { padding: 1.3rem 1.2rem; }
+
+      .exp-card-header { flex-direction: column; gap: 0.2rem; }
+
+      .exp-date { margin-top: 0; }
+
+      /* Research */
+      .research-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .contact-form { padding: 1.4rem; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-logo { font-size: 0.9rem; }
+      .hero-name { font-size: 1.9rem; }
+      .btn { font-size: 0.82rem; padding: 0.6rem 1.1rem; }
     }
   </style>
 </head>
@@ -592,11 +662,14 @@
   <nav>
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">Upeksha Amarasinghe</a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">About</a></li>
+        <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Experience</a></li>
+        <li><a href="#research" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Research</a></li>
+        <li><a href="#contact" onclick="document.querySelector('.nav-links').classList.remove('open'); document.querySelector('.nav-toggle').classList.remove('open')">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -605,22 +678,22 @@
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <p class="hero-eyebrow">Data Scientist · AI & Labor · Social Impact</p>
+        <p class="hero-eyebrow">Data Scientist · AI &amp; Labor · Social Impact</p>
         <h1 class="hero-name">Using AI to understand<br />how AI changes work.</h1>
         <p class="hero-tagline">
-          I sit at the intersection of machine learning and labor economics — building systems that measure, anticipate, and mitigate the human costs of automation.
+          I sit at the intersection of machine learning and labor economics, building systems that measure, anticipate, and address the human costs of automation.
         </p>
         <div class="hero-ctas">
           <a href="#about" class="btn btn-primary">About me</a>
-          <a href="#research" class="btn btn-secondary">Research & Writing</a>
+          <a href="#research" class="btn btn-secondary">Research &amp; Writing</a>
         </div>
       </div>
       <div class="hero-visual">
         <div class="stat-card">
           <span class="icon">🔬</span>
           <div>
-            <p class="label">Research Focus</p>
-            <p class="value">Labor market impacts of automation & AI adoption</p>
+            <p class="label">Focus</p>
+            <p class="value">Labor market impacts of automation &amp; AI adoption</p>
           </div>
         </div>
         <div class="stat-card">
@@ -634,7 +707,7 @@
           <span class="icon">🤝</span>
           <div>
             <p class="label">Mission</p>
-            <p class="value">AI that expands economic opportunity — not just productivity</p>
+            <p class="value">AI that creates broadly distributed economic opportunity</p>
           </div>
         </div>
       </div>
@@ -650,33 +723,33 @@
         <div class="about-body">
           <h2 class="section-title">Motivated by a simple question:<br /><em>Who bears the cost of progress?</em></h2>
           <p>
-            I studied Math and Economics at the University of Toronto and spent the early part of my career trying to understand how technology reshapes labor markets — not in the abstract, but for <strong>specific workers, in specific occupations, in specific cities</strong>. At MaRS Discovery District, I led research on automation risk across Canada, built tools to help workers navigate job transitions, and studied the COVID-19 vulnerabilities of precarious, essential workers. That work was cited by public health agencies, government bodies, and academic institutions.
+            I studied Math and Economics at the University of Toronto and spent the early part of my career trying to understand how technology reshapes labor markets, with focus on <strong>specific workers, in specific occupations, in specific cities</strong>. At MaRS Discovery District, I led research on automation risk across Canada, built tools to help workers navigate job transitions, and studied the COVID-19 vulnerabilities of precarious, essential workers. That work was cited by public health agencies, government bodies, and academic institutions.
           </p>
           <p>
-            Since then, I've moved deeper into applied machine learning — building AI systems at SkillLab (AI-powered job matching for governments and NGOs), Shopify, and now <strong>Workhelix</strong>, where I help Fortune 500 companies measure the real ROI of AI implementation. The thread connecting all of it: <strong>I want to understand what AI actually does to economic life</strong>, not just what we theorize it might do.
+            Since then, I have moved deeper into applied machine learning, building AI systems at SkillLab (AI-powered job matching for governments and NGOs), Shopify, and now <strong>Workhelix</strong>, where I help Fortune 500 companies measure the real ROI of AI implementation. The thread connecting all of it: <strong>understanding what AI actually does to economic life</strong>, grounded in evidence and rigorous measurement.
           </p>
           <p>
-            I believe the critical challenge of our era isn't whether AI will be transformative — it clearly will be — but whether that transformation distributes its gains broadly or concentrates them narrowly. That question is fundamentally <strong>empirical, economic, and urgent</strong>. It's why I'm drawn to Anthropic's work on AI safety and its economic and social dimensions: the organizations shaping how AI is deployed will shape who benefits.
+            The central challenge of our era is ensuring AI's transformation distributes its gains broadly. That question is fundamentally <strong>empirical, economic, and urgent</strong>. It is why I am drawn to Anthropic's work on AI safety and its economic and social dimensions: the organizations shaping how AI is deployed will shape who benefits.
           </p>
           <p>
-            I'm looking to do research that connects the frontier of AI capability with rigorous measurement of its labor market and social effects — and to do it in ways that can actually inform policy and practice.
+            I am looking to do work that connects the frontier of AI capability with rigorous measurement of its labor market and social effects, in ways that can directly inform policy and practice.
           </p>
         </div>
         <div class="about-aside">
           <div class="aside-block">
             <h4>Core Interests</h4>
             <ul>
-              <li>Labor market effects of automation & AI</li>
-              <li>AI for economic inclusion & opportunity</li>
-              <li>Measurement of AI ROI & workforce impact</li>
-              <li>Vulnerable worker policy & COVID-19 precarity</li>
-              <li>Green transition & just labor adjustment</li>
+              <li>Labor market effects of automation &amp; AI</li>
+              <li>AI for economic inclusion &amp; opportunity</li>
+              <li>Measurement of AI ROI &amp; workforce impact</li>
+              <li>Vulnerable worker policy &amp; COVID-19 precarity</li>
+              <li>Green transition &amp; just labor adjustment</li>
             </ul>
           </div>
           <div class="aside-block">
             <h4>Education</h4>
             <ul>
-              <li>BSc, Math & Economics — University of Toronto</li>
+              <li>BSc, Math &amp; Economics, University of Toronto</li>
             </ul>
           </div>
           <div class="aside-block">
@@ -709,9 +782,9 @@
             </div>
             <p class="exp-date">Jun 2023 – Present</p>
           </div>
-          <p class="exp-context">Series A · Andrew Ng–backed · B2B SaaS for F500 AI ROI measurement</p>
+          <p class="exp-context">Series A · Andrew Ng-backed · B2B SaaS for F500 AI ROI measurement</p>
           <p class="exp-desc">
-            Building ML and LLM-powered features that help Fortune 500 companies understand the economic value of their AI investments. I own end-to-end ML infrastructure on GCP & AWS, build LLM eval frameworks, and work directly with C-suite stakeholders to frame multi-million dollar decisions around AI adoption. This role puts me at a unique vantage point: seeing how the largest companies in the world are actually deploying AI, what's working, and what the real workforce implications are.
+            Building ML and LLM-powered features that help Fortune 500 companies understand the economic value of their AI investments. I own end-to-end ML infrastructure on GCP &amp; AWS, build LLM eval frameworks, and work directly with C-suite stakeholders to frame multi-million dollar decisions around AI adoption. This role puts me at a unique vantage point: seeing how the largest companies in the world are deploying AI, what is working, and what the real workforce implications are.
           </p>
           <div class="exp-tags">
             <span class="tag">LLMs</span><span class="tag">ML Infra</span><span class="tag">AI Evals</span><span class="tag">GCP</span><span class="tag">AWS</span><span class="tag">AI ROI</span>
@@ -726,9 +799,9 @@
             </div>
             <p class="exp-date">May 2022 – May 2023</p>
           </div>
-          <p class="exp-context">300K MAU · Automations & Inbox product lines</p>
+          <p class="exp-context">300K MAU · Automations &amp; Inbox product lines</p>
           <p class="exp-desc">
-            Data lead for Shopify Automations ($10M/month GMV), running regression models and A/B tests to measure the causal impact of product changes on merchant outcomes. Built analytical infrastructure that connected product decisions to real economic results for small businesses.
+            Data lead for Shopify Automations ($10M/month GMV), running regression models and A/B tests to measure the causal impact of product changes on merchant outcomes. Built analytical infrastructure connecting product decisions to real economic results for small businesses.
           </p>
           <div class="exp-tags">
             <span class="tag">Causal Inference</span><span class="tag">A/B Testing</span><span class="tag">dbt</span><span class="tag">SQL</span>
@@ -743,9 +816,9 @@
             </div>
             <p class="exp-date">Jan 2021 – Dec 2021</p>
           </div>
-          <p class="exp-context">Google AI Impact Challenge Winner · AI job-matching for governments & NGOs · Amsterdam</p>
+          <p class="exp-context">Google AI Impact Challenge Winner · AI job-matching for governments &amp; NGOs · Amsterdam</p>
           <p class="exp-desc">
-            Built and deployed a multilingual NLP model (BERT) for AI-powered job matching used by governments and NGOs to help workers navigate career transitions. Also co-researched the labor market impacts of the green transition with ETH Zürich — identifying data gaps that hamper evidence-based policy for workers displaced by decarbonization.
+            Built and deployed a multilingual NLP model (BERT) for AI-powered job matching used by governments and NGOs to help workers navigate career transitions. Also co-researched the labor market impacts of the green transition with ETH Zürich, identifying data gaps that matter for evidence-based policy on workers displaced by decarbonization.
           </p>
           <div class="exp-tags">
             <span class="tag">NLP</span><span class="tag">BERT</span><span class="tag">Job Matching</span><span class="tag">Green Transition</span><span class="tag">Policy Research</span>
@@ -762,7 +835,7 @@
           </div>
           <p class="exp-context">North America's largest innovation hub · Toronto</p>
           <p class="exp-desc">
-            This is where my research identity was formed. I led studies on automation risk across Canadian occupations and regions (commissioned by Brookfield Institute & Federal Reserve Bank of Philadelphia), built NLP models to measure supply and demand of inclusive financial innovation, and identified the scope of COVID-19 precarity among essential workers. That last study was cited by Public Health Ontario, the Labour Market Information Council, the Centre for Future Work, and the University of Ottawa — connecting data science to real policy change.
+            I led studies on automation risk across Canadian occupations and regions (commissioned by Brookfield Institute &amp; Federal Reserve Bank of Philadelphia), built NLP models to measure the supply and demand of inclusive financial innovation, and identified the scope of COVID-19 precarity among essential workers. That last study was cited by Public Health Ontario, the Labour Market Information Council, the Centre for Future Work, and the University of Ottawa, connecting data science to real policy impact.
           </p>
           <div class="exp-tags">
             <span class="tag">Labor Economics</span><span class="tag">Automation Research</span><span class="tag">NLP</span><span class="tag">Financial Inclusion</span><span class="tag">COVID-19 Policy</span>
@@ -779,7 +852,7 @@
           </div>
           <p class="exp-context">Digital fundraising infrastructure for Canadian non-profits · $3B+ processed</p>
           <p class="exp-desc">
-            Early career work building customer segmentation models and real-time SQL alert systems that protected non-profit fundraising revenue at scale.
+            Built customer segmentation models and real-time SQL alert systems that protected non-profit fundraising revenue at scale.
           </p>
           <div class="exp-tags">
             <span class="tag">Segmentation</span><span class="tag">SQL</span><span class="tag">Non-profit</span>
@@ -793,7 +866,7 @@
   <!-- RESEARCH -->
   <section id="research">
     <div class="section-inner">
-      <p class="section-label">Research & Writing</p>
+      <p class="section-label">Research &amp; Writing</p>
       <div class="divider"></div>
       <h2 class="section-title">Published work on AI,<br />labor, and economic inclusion</h2>
       <div class="research-grid">
@@ -807,21 +880,21 @@
 
         <a class="pub-card" href="https://medium.com/swlh/measure-the-supply-and-demand-for-inclusive-innovation-using-machine-learning-e8e0cedbd439" target="_blank" rel="noopener">
           <p class="pub-venue">The Startup · Medium</p>
-          <p class="pub-title">Measuring Supply & Demand for Inclusive Innovation Using Machine Learning</p>
-          <p class="pub-desc">NLP-driven research building a classification model to map the ecosystem of solutions targeting financial inclusion among the world's lowest-income populations — quantifying where innovation is (and isn't) meeting need.</p>
+          <p class="pub-title">Measuring Supply &amp; Demand for Inclusive Innovation Using Machine Learning</p>
+          <p class="pub-desc">NLP-driven research building a classification model to map the ecosystem of solutions targeting financial inclusion among the world's lowest-income populations, quantifying where innovation is meeting need and where gaps remain.</p>
           <p class="pub-arrow">Read the article →</p>
         </a>
 
         <a class="pub-card" href="https://www.marsdd.com/research-and-insights/automation-affecting-canadians/" target="_blank" rel="noopener">
           <p class="pub-venue">MaRS Discovery District</p>
           <p class="pub-title">Automation Affecting Canadians: Interactive Data Visualization</p>
-          <p class="pub-desc">The interactive companion to the full automation report — exploring occupation-level automation risk, wage distributions, and regional vulnerability across Canada. Built and managed a team of four data science interns to produce this.</p>
+          <p class="pub-desc">The interactive companion to the full automation report, exploring occupation-level automation risk, wage distributions, and regional vulnerability across Canada. Built and managed a team of four data science interns to produce this.</p>
           <p class="pub-arrow">Explore the tool →</p>
         </a>
 
         <a class="pub-card" href="https://www.marsdd.com/research-and-insights/covid-19-and-ontarios-sales-and-service-workers-who-is-most-vulnerable/" target="_blank" rel="noopener">
           <p class="pub-venue">MaRS Discovery District</p>
-          <p class="pub-title">COVID-19 and Ontario's Sales & Service Workers: Who Is Most Vulnerable?</p>
+          <p class="pub-title">COVID-19 and Ontario's Sales &amp; Service Workers: Who Is Most Vulnerable?</p>
           <p class="pub-desc">Identified the number and wages of essential workers facing elevated health risks and precarious employment conditions during the pandemic, and mapped the policy gaps leaving them exposed. Cited by Public Health Ontario, the Labour Market Information Council, the Centre for Future Work, and the University of Ottawa.</p>
           <p class="pub-arrow">Read the research →</p>
         </a>
@@ -839,7 +912,7 @@
         <div>
           <h2 class="section-title">Let's work on hard problems together</h2>
           <p class="contact-intro">
-            I'm interested in research collaborations, fellowship opportunities, and conversations about the intersection of AI, labor economics, and economic policy. If you're working on understanding how AI reshapes economic life — especially for workers who don't have a seat at the table where these decisions are made — I'd love to connect.
+            I am interested in research collaborations, fellowship opportunities, and conversations about the intersection of AI, labor economics, and economic policy. If you are working on understanding how AI reshapes economic life for workers whose futures are shaped by these decisions, I would love to connect.
           </p>
           <div class="contact-links">
             <a class="contact-link" href="mailto:upeksha.amarasinghe@gmail.com">
@@ -854,7 +927,7 @@
         </div>
         <div class="contact-form">
           <h3>Send a message</h3>
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form action="mailto:upeksha.amarasinghe@gmail.com" method="POST" enctype="text/plain">
             <div class="form-group">
               <label>Name</label>
               <input type="text" name="name" placeholder="Your name" required />
