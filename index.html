@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upeksha Amarasinghe</title>
+  <title>Upeksha Amarasinghe · Data Scientist</title>
+  <meta name="description" content="Data scientist working at the intersection of AI and labor economics. Building systems that measure the workforce implications of AI adoption for governments and Fortune 500 companies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://uamarasinghe.github.io/" />
+  <meta property="og:title" content="Upeksha Amarasinghe · Data Scientist" />
+  <meta property="og:description" content="Data scientist working at the intersection of AI and labor economics. Building systems that measure the workforce implications of AI adoption for governments and Fortune 500 companies." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Upeksha Amarasinghe · Data Scientist" />
+  <meta name="twitter:description" content="Data scientist working at the intersection of AI and labor economics." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%235b6af0'/><text x='16' y='22' font-family='Georgia,serif' font-size='14' font-weight='bold' fill='white' text-anchor='middle'>UA</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -80,6 +89,7 @@
     }
 
     .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
 
     /* Hamburger */
     .nav-toggle {
@@ -656,7 +666,7 @@
     <div class="hero-inner">
       <div class="hero-text">
         <p class="hero-eyebrow">Data Scientist · AI &amp; Labor · Social Impact</p>
-        <h1 class="hero-name">Using AI to understand<br />how AI changes work.</h1>
+        <h1 class="hero-name">Using AI to understand how AI changes work.</h1>
         <p class="hero-tagline">
           I sit at the intersection of machine learning and labor economics, building systems that measure, anticipate, and address the human costs of automation.
         </p>
@@ -745,7 +755,7 @@
     <div class="section-inner">
       <p class="section-label">Experience</p>
       <div class="divider"></div>
-      <h2 class="section-title">Building at the frontier<br />of AI and economics</h2>
+      <h2 class="section-title">From census data to LLM evals</h2>
       <div class="exp-cards">
 
         <div class="exp-card">
@@ -895,6 +905,10 @@
           <p class="contact-intro">
             I am interested in research collaborations and conversations about the intersection of AI, labor economics, and economic policy. If you are working on understanding how AI reshapes economic life for workers whose futures are shaped by these decisions, I would love to connect.
           </p>
+          <a class="contact-link" href="https://www.linkedin.com/in/uamarasinghe" target="_blank" rel="noopener" style="margin-top:1.5rem;">
+            <span class="cl-icon">💼</span>
+            linkedin.com/in/uamarasinghe
+          </a>
         </div>
         <div class="contact-form">
           <h3>Get in touch</h3>
@@ -924,6 +938,22 @@
       var mailto = 'mailto:' + addr + '?subject=Getting%20in%20touch';
       var btn = document.getElementById('emailBtn');
       if (btn) btn.href = mailto;
+    })();
+
+    // Active nav on scroll
+    (function() {
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('.nav-link');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function(l) { l.classList.remove('active'); });
+            var active = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
     })();
 
     var toggle = document.getElementById('navToggle');
